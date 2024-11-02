@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Left & Right Arrows to Rotate</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        header {
+            background-color: #1a237e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .accessory-menu {
+            width: 250px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            position: sticky;
+            top: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .accessory-menu h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a237e;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 5px;
+        }
+
+        .menu-section {
+            margin-bottom: 25px;
+        }
+
+        .menu-section label {
+            display: block;
+            padding: 10px 10px;
+            margin: 5px 0;
+            background-color: #f7f8fa;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-section label:hover {
+            background-color: #e3f2fd;
+        }
+
+        .menu-section input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .uniform-area {
+            flex: 1;
+            text-align: center;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        #drop-zone {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-color: #f0f2f5;
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #uniform {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .placed {
+            position: absolute;
+            cursor: move;
+            width: 50px;
+            height: auto;
+        }
+
+        .selected {
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Customize Your Class B Short Sleeve Overblouse</h1>
+        <h2> Use Left & Right Arrows to Rotate</h2>
+    </header>
+
+    <div class="container">
+        
+        <div class="accessory-menu">
+            <h3>Grades</h3>
+            <div class="menu-section">
+                <label><input type="checkbox" id="rank-1lt"> 1LT </label>
+                <label><input type="checkbox" id="rank-2lt"> 2LT </label>
+                <label><input type="checkbox" id="rank-a1c"> A1C </label>
+                <label><input type="checkbox" id="rank-airman"> Amn </label>
+                <label><input type="checkbox" id="rank-captain"> Captain </label>
+                <label><input type="checkbox" id="rank-cmsgt"> CMSgt </label>
+                <label><input type="checkbox" id="rank-col"> Col </label>
+                <label><input type="checkbox" id="rank-ltcol"> LtCol </label>
+                <label><input type="checkbox" id="rank-major"> Major </label>
+                <label><input type="checkbox" id="rank-msgt"> MSgt </label>
+                <label><input type="checkbox" id="rank-smsgt"> SMSgt </label>
+                <label><input type="checkbox" id="rank-sra"> SrA </label>
+                <label><input type="checkbox" id="rank-ssgt"> SSgt </label>
+                <label><input type="checkbox" id="rank-tsgt"> TSgt </label>
+            </div>
+
+            <h3>Badges</h3>
+            <div class="menu-section">
+                <label><input type="checkbox" id="aircrew-badge"> Aircrew Badge</label>
+                <label><input type="checkbox" id="balloon-badge"> Balloon Badge</label>
+                <label><input type="checkbox" id="comm-badge"> Comm Badge</label>
+                <label><input type="checkbox" id="cyber-badge"> Cyber Badge</label>
+                <label><input type="checkbox" id="es-badge"> Emergency Services Badge</label>
+                <label><input type="checkbox" id="glider-badge"> Glider Badge</label>
+                <label><input type="checkbox" id="ground-team-badge"> Ground Team Badge</label>
+                <label><input type="checkbox" id="hist-badge"> Historian Badge</label>
+                <label><input type="checkbox" id="it-badge"> IT Badge</label>
+                <label><input type="checkbox" id="nra-marksman-badge"> NRA Marksman Badge</label>
+                <label><input type="checkbox" id="observer-badge"> Observer Badge</label>
+                <label><input type="checkbox" id="pilot-badge"> Pilot Badge</label>
+                <label><input type="checkbox" id="presolo-badge"> Presolo Badge</label>
+                <label><input type="checkbox" id="rocketry-badge"> Rocketry Badge</label>
+                <label><input type="checkbox" id="solo-badge"> Solo Badge</label>
+                <label><input type="checkbox" id="stem-badge"> STEM Badge</label>
+                <label><input type="checkbox" id="suas-pilot-badge"> SUAS Pilot Badge</label>
+                <label><input type="checkbox" id="suas-presolo-badge"> SUAS Presolo Badge</label>
+                <label><input type="checkbox" id="suas-technician-badge"> SUAS Technician Badge</label>
+            </div>
+
+            <h3>Ribbons</h3>
+            <div class="menu-section">
+                <label><input type="checkbox" id="achievement-ribbon"> Achievement Ribbon</label>
+                <label><input type="checkbox" id="afa-squadron-ribbon"> AFA Squadron Cadet of the Year Ribbon</label>
+                <label><input type="checkbox" id="afsa-squadron-nco-ribbon"> AFSA Squadron NCO of The Year Ribbon</label>
+                <label><input type="checkbox" id="air-sar-ribbon"> Air SAR Ribbon</label>
+                <label><input type="checkbox" id="armstrong-ribbon"> Armstrong Ribbon</label>
+                <label><input type="checkbox" id="arnold-ribbon"> Arnold Ribbon</label>
+                <label><input type="checkbox" id="bronze-medal-ribbon"> Bronze Medal of Valor Ribbon</label>
+                <label><input type="checkbox" id="cadet-advisory-ribbon"> Cadet Advisory Council Ribbon</label>
+                <label><input type="checkbox" id="cadet-recruiter-ribbon"> Cadet Recruiter Ribbon</label>
+                <label><input type="checkbox" id="special-activity-ribbon"> Cadet Special Activity Ribbon</label>
+                <label><input type="checkbox" id="commanders-commendation"> Commanders Commendation Ribbon</label>
+                <label><input type="checkbox" id="community-service-ribbon"> Community Service Ribbon</label>
+                <label><input type="checkbox" id="crisis-ribbon"> Crisis Ribbon</label>
+                <label><input type="checkbox" id="curry-ribbon"> Curry Ribbon</label>
+                <label><input type="checkbox" id="disaster-relief-ribbon"> Disaster Relief Ribbon</label>
+                <label><input type="checkbox" id="distinguished-service"> Distinguished Service Ribbon</label>
+                <label><input type="checkbox" id="doolittle-ribbon"> Doolittle Ribbon</label>
+                <label><input type="checkbox" id="eaker-ribbon"> Eaker Ribbon</label>
+                <label><input type="checkbox" id="earhart-ribbon"> Earhart Ribbon</label>
+                <label><input type="checkbox" id="encampment-ribbon"> Encampment Ribbon</label>
+                <label><input type="checkbox" id="exceptional-ribbon"> Exceptional Service Ribbon</label>
+                <label><input type="checkbox" id="feik-ribbon"> Feik Ribbon</label>
+                <label><input type="checkbox" id="find-ribbon"> Find Ribbon</label>
+                <label><input type="checkbox" id="goddard"> Goddard Ribbon</label>
+                <label><input type="checkbox" id="homeland-security"> Homeland Security Ribbon</label>
+                <label><input type="checkbox" id="iace"> International Air Cadet Exchange Ribbon</label>
+                <label><input type="checkbox" id="lifesaving"> Lifesaving Award Ribbon</label>
+                <label><input type="checkbox" id="lindberg"> Lindberg Ribbon</label>
+                <label><input type="checkbox" id="meritorious-service"> Meritorious Service Ribbon</label>
+                <label><input type="checkbox" id="mitchell"> Mitchell Ribbon</label>
+                <label><input type="checkbox" id="ncc"> National Cadet Competition Ribbon</label>
+                <label><input type="checkbox" id="ncgc"> National Color Guard Competition Ribbon</label>
+                <label><input type="checkbox" id="ncuc"> National Commanders Unit Citation Ribbon</label>
+                <label><input type="checkbox" id="red-service" > Red Service Ribbon </label>
+                <label><input type="checkbox" id="rickenbacker"> Rickenbacker Ribbon</label>
+                <label><input type="checkbox" id="silver-medal-ribbon"> Silver Medal of Valor Ribbon</label>
+                <label><input type="checkbox" id="spaatz"> Spaatz Ribbon</label>
+                <label><input type="checkbox" id="unit-citation-ribbon"> Unit Citation Ribbon</label>
+                <label><input type="checkbox" id="vfw-nco-ribbon"> VFW Cadet NCO Award</label>
+                <label><input type="checkbox" id="vfw-officer-ribbon"> VFW Cadet Officer Award</label>
+                <label><input type="checkbox" id="wright-brothers"> Wright Brothers Ribbon</label>
+            </div>
+        </div>
+    
+        
+        <div class="uniform-area">
+            <h2>Class B Short Sleeve Overblouse</h2>
+            <div id="drop-zone">
+                <img src="../IMAGES/CADET_UNIFORMS/CADET_FEMALE/CADET_FEMALE_CLASS_B/SHORTSLEEVE/BLANK_CADET_CLASS_B_FEMALE_CLOSED_SHORT_OVERBLOUSE.png" id="uniform" alt="Blank Long Sleeve Overblouse">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropZone = document.getElementById('drop-zone');
+            let selectedItem = null; 
+
+            
+            const imageMap = {
+                'rank-1lt': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_1lt.png', size: '50px' },
+                'rank-2lt': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_2lt.png', size: '50px' },
+                'rank-a1c': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_a1c.png', size: '30px' },
+                'rank-airman': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_airman.png', size: '30px' },
+                'rank-captain': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_captain.png', size: '50px' },
+                'rank-cmsgt': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_cmsgt.png', size: '25px' },
+                'rank-col': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_col.png', size: '50px' },
+                'rank-ltcol': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_ltcol.png', size: '50px' },
+                'rank-major': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_major.png', size: '50px' },
+                'rank-msgt': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_msgt.png', size: '25px' },
+                'rank-smsgt': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_smsgt.png', size: '25px' },
+                'rank-sra': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_sra.png', size: '30px' },
+                'rank-ssgt': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_ssgt.png', size: '30px' },
+                'rank-tsgt': { src: '../IMAGES/RANKS/CADET_RANKS/CLASS_B_CADET_RANKS/class_b_tsgt.png', size: '30px' },
+            
+
+
+            'achievement-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/ACHIEVEMENT_AWARD_RIBBON.png', size: '30px' },
+            'afa-squadron-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/AFA_Squadron_Cadet_of_the_Year.png', size: '30px' },
+            'afsa-squadron-nco-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/AFSA_Squadron_NCO_of_The_Year.png', size: '30px' },
+            'air-sar-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/AIR_SAR_RIBBON.png', size: '30px' },
+            'armstrong-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/ARMSTRONG_RIBBON.png', size: '30px' },
+            'arnold-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/ARNOLD_RIBBON.png', size: '30px' },
+            'bronze-medal-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/BRONZE_MEDAL_OF_VALOR_RIBBON.png', size: '30px' },
+            'silver-medal-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/SILVER_MEDAL_OF_VALOR_RIBBON.png', size: '30px' },
+            'cadet-advisory-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/CADET_ADVISORY_COUNCIL_RIBBON.png', size: '30px' },
+            'cadet-recruiter-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/CADET_RECRUITER_RIBBON.png', size: '30px' },
+         'special-activity-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/CADET_SPECIAL_ACTIVITY_RIBBON.png', size: '30px' },
+         'commanders-commendation': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/COMMANDERS_COMMENDATION_RIBBON.png', size: '30px' },
+         'community-service-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/COMMUNITY_SERVICE_RIBBON.png', size: '30px' },
+         'crisis-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/CRISIS_RIBBON.png', size: '30px' },
+         'curry-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/CURRY_RIBBON.png', size: '30px' },
+          'disaster-relief-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/DISASTER_RELIEF_RIBBON.png', size: '30px' },
+         'distinguished-service': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/DISTINGUISHED_SERVICE_RIBBON.png', size: '30px' },
+           'doolittle-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/DOOLITTLE_RIBBON.png', size: '30px' },
+          'eaker-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/EAKER_RIBBON.png', size: '30px' },
+          'earhart-ribbon': {src: '../IMAGES/RIBBONS/CADET_RIBBONS/EARHART_RIBBON.png', size: '30px' }, 
+           'encampment-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/ENCAMPMENT_RIBBON.png', size: '30px' },
+         'exceptional-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/EXCEPTIONAL_SERVICE_RIBBON.png', size: '30px' },
+         'feik-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/FEIK_RIBBON.png', size: '30px' },
+         'find-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/FIND_RIBBON.png', size: '30px' },
+         'goddard': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/GODDARD_RIBBON.png', size: '30px' },
+            'homeland-security': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/HOMELAND_SECURITY_RIBBON.png', size: '30px' },
+         'iace': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/INTERNATIONAL_AIR_CADET_EXCHANGE_RIBBON.png', size: '30px' },
+         'lifesaving': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/LIFESAVING_AWARD_RIBBON.png', size: '30px' },
+         'lindberg': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/LINDBERG_RIBBON.png', size: '30px' },
+         'meritorious-service': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/MERITORIOUS_SERVICE_RIBBON.png', size: '30px' },
+         'mitchell': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/MITCHELL_RIBBON.png', size: '30px' },
+         'ncc': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/NATIONAL_CADET_COMPETITION_RIBBON.png', size: '30px' },
+         'ncgc': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/NATIONAL_COLOR_GUARD_COMPETITION_RIBBON.png', size: '30px' },
+         'ncuc': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/NATIONAL_COMMANDERS_UNIT_CITATION_RIBBON.png', size: '30px' },
+         'red-service': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/redser-02yr.png', size: '30px' },
+         'rickenbacker': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/RICKENBACKER_RIBBON.png', size: '30px' },
+            'spaatz': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/SPAATZ_RIBBON.png', size: '30px' },
+            'unit-citation-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/UNIT_CITATION_RIBBON.png', size: '30px' },
+            'vfw-nco-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/VFW_Cadet_NCO_Award.png', size: '30px' },
+         'vfw-officer-ribbon': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/VFW_Cadet_Officer_Award.png', size: '30px' },
+         'wright-brothers': { src: '../IMAGES/RIBBONS/CADET_RIBBONS/WRIGHT_BROTHERS_RIBBON.png', size: '30px' },
+        
+         'aircrew-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/AIRCREW_BADGE_CLASS_B_CADET.png', size: '65px' },
+         'balloon-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/BALLOON_BADGE_CLASS_B_CADET.png', size: '65px' },
+         'comm-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/COMM_BADGE_CLASS_B_CADET.png', size: '30px' },
+         'cyber-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/CYBER_BADGE_CLASS_B_CADET.png', size: '30px' },
+         'es-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/ES_BADGE_CLASS_B_CADET.png', size: '30px' },
+        'glider-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/GLIDER_BADGE_CLASS_B_CADET.png', size: '65px' },
+        'ground-team-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/GROUND_TEAM_BADGE_CLASS_B_CADET.png', size: '30px' },
+        'hist-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/HIST_BADGE_CLASS_B_CADET.png', size: '30px' },
+        'it-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/IT_BADGE_CLASS_B_CADET.png', size: '30px' },
+        'nra-marksman-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/NRA_MARKSMAN_CLASS_B_CADET.png', size: '40px' },
+        'observer-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/OBSERVER_BADGE_CLASS_B_CADET.png', size: '65px' },
+        'pilot-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/PILOT_BADGE_CLASS_B_CADET.png', size: '65px' },
+        'stem-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/STEM_BADGE_CLASS_B_CADET.png', size: '30px' },
+        'suas-pilot-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/SUAS_PILOT_BADGE_CLASS_B_CADET.png', size: '65px' },
+        'suas-presolo-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/SUAS_PRESOLO_BADGE_CLASS_B_CADET.png', size: '65px' },
+        'suas-technician-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/SUAS_TECHNICIAN_BADGE_CLASS_B_CADET.png', size: '65px' },
+        'presolo-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/PRESOLO_BADGE_CLASS_B_CADET.png', size: '65px' },
+        'solo-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/SOLO_BADGE_CLASS_B_CADET.png', size: '65px' },
+        'stem-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/STEM_BADGE_CLASS_B_CADET.png', size: '30px' },
+        'rocketry-badge': { src: '../IMAGES/BADGES/CADET/CLASS_B_CADET_BADGES/ROCKETRY_BADGE_CLASS_B_CADET.png', size: '20px' },
+
+            };
+
+
+            
+         
+   
+  
+   document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                if (this.id.startsWith('rank')) {
+                    createTwoRankImages(this.id);  
+                } else {
+                    createSingleImage(this.id);
+                }
+            } else {
+                removeImages(this.id);
+            }
+        });
+    });
+
+   
+    function createTwoRankImages(checkboxId) {
+        const imageData = imageMap[checkboxId];
+        if (!imageData) return;
+
+        const leftImage = createImage(imageData.src, 'left', checkboxId, imageData.size);
+        const rightImage = createImage(imageData.src, 'right', checkboxId, imageData.size);
+
+       
+        leftImage.style.left = '150px';
+        leftImage.style.top = '100px';
+
+        rightImage.style.left = '300px';
+        rightImage.style.top = '100px';
+
+        dropZone.appendChild(leftImage);
+        dropZone.appendChild(rightImage);
+
+        makeMovable(leftImage);
+        makeMovable(rightImage);
+    }
+
+   
+    function createSingleImage(checkboxId) {
+        const imageData = imageMap[checkboxId];
+        if (!imageData) return;
+
+        const accessory = document.createElement('img');
+        accessory.src = imageData.src;
+        accessory.classList.add('placed');
+        accessory.style.width = imageData.size || '50px'; 
+        accessory.style.position = 'absolute';
+        accessory.style.left = '200px'; 
+        accessory.style.top = '100px';  
+        accessory.setAttribute('data-checkbox-id', checkboxId);
+
+        dropZone.appendChild(accessory);
+
+        makeMovable(accessory);
+    }
+
+    
+    function removeImages(checkboxId) {
+        const images = document.querySelectorAll(`[data-checkbox-id*="${checkboxId}"]`);
+        images.forEach(image => image.remove());
+    }
+
+   
+    function makeMovable(image) {
+        image.addEventListener('mousedown', function (e) {
+            let shiftX = e.clientX - image.getBoundingClientRect().left;
+            let shiftY = e.clientY - image.getBoundingClientRect().top;
+
+            function moveAt(pageX, pageY) {
+                image.style.left = `${pageX - dropZone.getBoundingClientRect().left - shiftX}px`;
+                image.style.top = `${pageY - dropZone.getBoundingClientRect().top - shiftY}px`;
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            document.addEventListener('mouseup', function () {
+                document.removeEventListener('mousemove', onMouseMove);
+            }, { once: true });
+
+            image.ondragstart = function () {
+                return false;
+            };
+        });
+    }
+
+    
+    document.addEventListener('keydown', function (event) {
+        if (!selectedItem) return; 
+
+        const rotationStep = 15; 
+        let currentRotation = selectedItem.style.transform.match(/rotate\((\d+)deg\)/);
+        let currentAngle = currentRotation ? parseInt(currentRotation[1]) : 0;
+
+        if (event.key === 'ArrowLeft') {
+            currentAngle -= rotationStep;
+        } else if (event.key === 'ArrowRight') {
+            currentAngle += rotationStep;
+        }
+
+        selectedItem.style.transform = `rotate(${currentAngle}deg)`;
+    });
+
+    
+    function makeImageRotatable(image) {
+        image.addEventListener('click', function () {
+            
+            if (selectedItem) {
+                selectedItem.classList.remove('selected');
+            }
+
+            selectedItem = image;
+            image.classList.add('selected'); 
+
+            
+            removeRotateButtons(image);
+        });
+    }
+
+    
+    function createImage(src, position, checkboxId, size) {
+        const image = document.createElement('img');
+        image.src = src;
+        image.classList.add('placed');
+        image.style.width = size || '50px'; 
+        image.setAttribute('data-checkbox-id', checkboxId + '-' + position); 
+
+        
+        makeMovable(image);
+        makeImageRotatable(image);
+
+        return image;
+    }
+
+    
+    function removeRotateButtons(image) {
+        if (image._rotateLeftButton && image._rotateRightButton) {
+            image._rotateLeftButton.remove();
+            image._rotateRightButton.remove();
+        }
+    }
+
+    
+    document.addEventListener('click', function (event) {
+        if (!dropZone.contains(event.target) && selectedItem) {
+            selectedItem.classList.remove('selected');
+            selectedItem = null; 
+        }
+    });
+});
+</script>
+</body>
+</html>
